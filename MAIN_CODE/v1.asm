@@ -12,7 +12,7 @@ section .data
 	intro db "Darknet_Index_Guide-DIG", 10 ;intro message
 	intro_len equ $ - intro ;length of the intro
 	
-	version db "Version 1.02.00", 10 ;versioning
+	version db "Version 1.03.00", 10 ;versioning
 	version_len equ $ - version ;length of the version
 
 	inputms db "INPUT: " ;input print
