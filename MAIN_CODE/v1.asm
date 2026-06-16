@@ -42,13 +42,13 @@ _start:
 
 loop_start:
 ;---OPTIONS PRINT---
-		call options_text ;calls all the data in the options.asm file
+		call options_text ;calls all the data in the opt.asm file
 
 ;---INPUT PROMPT PRINT---
 		mov rax, 1 ;syswrite
 		mov rdi, 1 ;stdout
 		mov rsi, inputms ;pointer to the input print
-		mov rdx, input_len ;pointer to the length of the options
+		mov rdx, input_len ;pointer to the length of the input
 		syscall
 
 ;---TAKE INPUT---
@@ -83,7 +83,7 @@ loop_start:
 
 ;---PRINT FOR DOCUMENT---
 	document_option:
-			call doc_text ;calls the data from the doc.asm files
+			call doc_text ;calls the data from the doc.asm file
 
 			jmp loop_start
 
@@ -95,19 +95,19 @@ loop_start:
 
 ;---PRINT FOR HISTORY---
 	history_option:
-			call history_text
+			call history_text ;calls the data from the hist.asm file
 
 			jmp loop_start
 
 ;---PRINT RESOURCES---
 	resource_option:
-			call resource_text
+			call resource_text ;calls the data from the res.asm file
 
 			jmp loop_start
 
 ;---PRINT NOTICE---
 	notice_option:
-			call not_text
+			call not_text ;calls the data from the not.asm file
 
 			jmp loop_start
 
