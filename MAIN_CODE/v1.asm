@@ -1,7 +1,9 @@
-extern options_text ;imports data from the options file
-extern sites_text
-extern doc_text
-extern history_text
+extern options_text ;imports data from the opt file
+extern sites_text ;imports data from the sites file
+extern doc_text ;imports data from the doc file
+extern history_text ;imports data from the hist file
+extern resource_text ;imports data from the res file
+extern not_text ;imports data from the not file
 
 section .bss
 	input resb 2 ;reserves 2 bytes for user-input
@@ -16,14 +18,8 @@ section .data
 	inputms db "INPUT: " ;input print
 	input_len equ $ - inputms ;length of input prompt
 
-	resource db 10, "Recommended equipment for  accessing and safely using the Darknet is Tor Browser on Personal Computers and Laptops and Onion Browser on Smart Devices. Mullvad VPN is the best privacy-first VPN. Although has no free options.", 10
-	resource_len equ $ - resource ;length of resource
-
 	invalidms db 10, "INVALID INPUT", 10 ;invalid input message
 	invalidms_len equ $ - invalidms ;length of the invalidms message
-
-	notice db 10, "NOTICE: This program is not of malicious intents. The intent of the developer, Nathan Slone, is not of malicious nor criminal intent, only education. The license of the program is detailed on the repository of the program [https://github.com/Void-STUDIOSDEV/DIG/blob/main/LICENSE.md] is under the GNU General Public LIcense v2.0, please adhere to the license.", 10
-	notice_len equ $ - notice ;length of the notice message
 
 
 section .text
@@ -105,21 +101,13 @@ loop_start:
 
 ;---PRINT RESOURCES---
 	resource_option:
-			mov rax, 1 ;syswrite
-			mov rdi, 1 ;stdout
-			mov rsi, resource ;pointer to the resource message
-			mov rdx, resource_len ;pointer to the length of the resource length
-			syscall
+			call resource_text
 
 			jmp loop_start
 
 ;---PRINT NOTICE---
 	notice_option:
-			mov rax, 1 ;syswrite
-			mov rdi, 1 ;stdout
-			mov rsi, notice ;pointer to the notice message
-			mov rdx, notice_len ;pointer to the length of the notice length
-			syscall
+			call not_text
 
 			jmp loop_start
 

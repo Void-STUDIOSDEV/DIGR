@@ -1,5 +1,5 @@
 section .data
-    options db  10, "ALL OPTIONS: SITES [S], HISTORY [H], DOCUMENATION [D], RESOURCES [R], NOTICE, [E] EXIT [E]", 10 ;options
+    options db  10, "ALL OPTIONS: SITES [S], HISTORY [H], DOCUMENATION [D], RESOURCES [R], NOTICE [N], [E] EXIT [E]", 10 ;options
     options_len equ $ - options ;length of input
 
 
